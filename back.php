@@ -34,7 +34,13 @@
   </div>
     <div class="rb tab">
       <?php
-       
+          $do=$GET['do']??'main';
+          $file="./back/{$do}.php";
+        if(file_exists($file)){
+            include $file;
+        }else{
+            include "./front/main.php";
+        }
       ?>
     </div>
   </div>
