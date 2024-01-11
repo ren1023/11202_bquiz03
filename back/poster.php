@@ -38,8 +38,13 @@
                     <input type="text" name="name[]" value="<?= $po['name']; ?>">
                 </div>
                 <div>
-                    <input type="button" value="往上">
-                    <input type="button" value="往下">
+                    <input type="button" value="往上" 
+                    data-id="<?=$po['id'];?>" 
+                    data-sw="<?=($idx!=0)?$pos['$idx-1']['id']:$po['id'];?>"> <!-- pos這個陣列-1時，等於0時，則顯示第一筆。 -->
+
+                    <input type="button" value="往下" 
+                    data-id="<?=$po['id'];?>" 
+                    data-sw="<?=((count($pos)-1)!=$idx)?$pos['$idx+1']['id']:$po['id'];?>"><!-- pos這個陣列+1時，等於最後一筆(陣列總數-1)時，則顯示最後一筆。 -->
                 </div>
                 <div style='color:black'>
                     <input type="hidden" name="id[]" value="<?= $po['id']; ?>">
