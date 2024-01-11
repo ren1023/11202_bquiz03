@@ -1,3 +1,13 @@
+<?php include_once "./api/db.php";
+if(!empty($_POST)){
+  if($_POST['acc']=='admin' && $_POST['pw']=='1234'){
+    $_SESSION['login']=1;
+  }else{
+    $error="<div class='ct' style='color:red'>帳號或密碼錯誤</div>";
+    // $error="<div class='ct' style='color:red'>帳號或密碼錯誤</div>";
+  }
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0055)?do=admin -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -5,8 +15,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>影城</title>
-  <link rel="stylesheet" href="./css/css.css">
-  <script src="./js/jquery-1.9.1.min.js"></script>
+  <link rel="stylesheet" href="css/css.css">
+  <script src="js/jquery-1.9.1.min.js"></script>
 </head>
 
 <body>
@@ -26,6 +36,10 @@
       </marquee>
     </div>
     <div id="mm">
+      <!-- 加判斷式，在後台登入後，才能看到後台的功能選單-->
+      <?php
+      if(isset($_SESSION['login'])){
+      ?>
       <div class="ct a rb" style="position:relative; width:101.5%; left:-1%; padding:3px; top:-9px;">
         <a href="?do=tit">網站標題管理</a>|
         <a href="?do=go">動態文字管理</a>|
@@ -35,15 +49,47 @@
       </div>
       <div class="rb tab">
         <?php
-        $do = $GET['do'] ?? 'main';
+        $do = $_GET['do'] ?? 'main';
         $file = "./back/{$do}.php";
         if (file_exists($file)) {
           include $file;
         } else {
-          include "./front/main.php";
+          include "./back/main.php";
         }
         ?>
       </div>
+
+      <?php
+      }else{
+      ?>
+
+      <!-- 建立登入畫面 -->
+      <form action="?" method="post" style="width:35%;margin:20px auto;">
+        <h3 class="ct">管理者登入</h3>
+        <!-- 如果有錯訊息要顯示 -->
+ <?php
+  if(isset($error)){
+    echo $error;
+  }
+  ?>
+        <table>
+          <tr>
+            <td>帳號：</td>
+            <td><input type="text" name="acc" ></td>
+          </tr>
+          <tr>
+            <td>密碼：</td>
+            <td><input type="password" name="pw" ></td>
+          </tr>
+         
+        </table>
+        <div class="ct"><input type="submit" value="登入"></div>
+      </form>
+      <?php
+}
+?>  
+
+
     </div>
     <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
   </div>

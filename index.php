@@ -8,6 +8,8 @@
 <script src="./js/jquery-1.9.1.min.js"></script>
 </head>
 
+<?php include_once "./api/db.php" ?>
+
 <body>
 <div id="main">
   <div id="top" class="ct" style=" background:#999 center; background-size:cover; " title="替代文字">
