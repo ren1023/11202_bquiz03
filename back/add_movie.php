@@ -54,19 +54,19 @@
             </tr>
             <tr>
                 <td class="ct">發行商</td>
-                <td><input type="text" name="" id=""></td>
+                <td><input type="text" name="publish"></td>
             </tr>
             <tr>
                 <td class="ct">導演</td>
-                <td><input type="text" name="director" id=""></td>
+                <td><input type="text" name="director"></td>
             </tr>
             <tr>
                 <td class="ct">預告影片</td>
-                <td><input type="file" name="trailer" id=""></td>
+                <td><input type="file" name="trailer"></td>
             </tr>
             <tr>
                 <td class="ct">電影海報</td>
-                <td><input type="file" name="poster" id=""></td>
+                <td><input type="file" name="poster"></td>
             </tr>
         </table>
     </div>

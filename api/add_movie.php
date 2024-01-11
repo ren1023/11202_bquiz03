@@ -1,6 +1,6 @@
 <?php include_once 'db.php';
-if(isset($_FILES['trailer']['temp_name'])){
-    move_uploaded_file($_FILES['trailer']['temp_name'],"../img/".$_FILES['trailer']['name']);
+if(isset($_FILES['trailer']['tmp_name'])){
+    move_uploaded_file($_FILES['trailer']['tmp_name'],"../img/".$_FILES['trailer']['name']);
     $_POST['trailer']=$_FILES['trailer']['name'];
 
 }   
