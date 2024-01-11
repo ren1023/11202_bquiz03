@@ -10,5 +10,5 @@ $_POST['rank']=$Poster->max('id')+1;//下一個rank值，就是最大值+1
 $_POST['ani']=rand(1,3);
 
 $Poster->save($_POST);
-to("../back.php?do=poster;")
+to("../back.php?do=poster");
 ?>
