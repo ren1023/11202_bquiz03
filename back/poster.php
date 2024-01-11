@@ -38,13 +38,13 @@
                     <input type="text" name="name[]" value="<?= $po['name']; ?>">
                 </div>
                 <div>
-                    <input type="button" value="往上" 
-                    data-id="<?=$po['id'];?>" 
-                    data-sw="<?=($idx!=0)?$pos['$idx-1']['id']:$po['id'];?>"> <!-- pos這個陣列-1時，等於0時，則顯示第一筆。 -->
+                    <input class="btn" type="button" value="往上" 
+                        data-id="<?=$po['id'];?>" 
+                        data-sw="<?=($idx!=0)?$pos[$idx-1]['id']:$po['id'];?>"> <!-- pos這個陣列-1時，等於0時，則顯示第一筆。 -->
 
-                    <input type="button" value="往下" 
-                    data-id="<?=$po['id'];?>" 
-                    data-sw="<?=((count($pos)-1)!=$idx)?$pos['$idx+1']['id']:$po['id'];?>"><!-- pos這個陣列+1時，等於最後一筆(陣列總數-1)時，則顯示最後一筆。 -->
+                    <input class="btn" type="button" value="往下" 
+                        data-id="<?=$po['id'];?>" 
+                        data-sw="<?=((count($pos)-1)!=$idx)?$pos[$idx+1]['id']:$po['id'];?>"><!-- pos這個陣列+1時，等於最後一筆(陣列總數-1)時，則顯示最後一筆。 -->
                 </div>
                 <div style='color:black'>
                     <input type="hidden" name="id[]" value="<?= $po['id']; ?>">
@@ -89,5 +89,15 @@
             <input type="reset" value="重置">
         </div>
     </form>
-
 </div>
+<script>
+    $(".btn").on("click",function(){
+        let id=$(this).data('id')
+        let sw=$(this).data('sw')
+        let table='poster'
+        $.post("./api/sw.php",{id,sw,table},()=>{
+            location.reload()//交換完後，重整畫面
+        })
+    })
+
+</script>
