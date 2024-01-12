@@ -111,6 +111,18 @@
 <script>
     $(".item").eq(0).show();//只顯示一張預告片
 
+    let now=0;
+    let timer=setInterval("slide()",3000) //每隔3秒執行slide  
+    function slide(){
+        $(".item").hide();
+        now++;
+        if(now >8){
+            now=0;
+        }
+        $(".item").eq(now).show();
+    }
+
+
     let total=$(".btn").length// 計算btn這個class元件的總數
     let p=0;
     // console.log(total)
