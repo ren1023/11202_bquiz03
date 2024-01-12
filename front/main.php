@@ -109,22 +109,22 @@
 
 </div>
 <script>
-    $(".item").eq(0).show();
-    let total=$(".btn").length
+    $(".item").eq(0).show();//只顯示一張預告片
+
+    let total=$(".btn").length// 計算btn這個class元件的總數
     let p=0;
-    console.log(total)
-    $(".left,.right").on("click",function(){
-        let arrow=$(this).attr('class');
+    // console.log(total)
+    $(".left,.right").on("click",function(){//class是left和right，當click時
+        let arrow=$(this).attr('class');//找到元件的屬性
         switch(arrow){
-            case "right":
+            case "right"://點right這個屬性時，會+1
                 if(p+1 <=(total-4)){
                     p=p+1;
                 }
             break;
-            case "left":
+            case "left": //點right這個屬性時，會-1
                 if(p-1>=0){
-                p=p-1;
-
+                    p=p-1;
                 }
             break;
         }
@@ -133,11 +133,7 @@
 </script>
 
 
-
-
-
-
-
+<!-- -------------------------------------------------------------------------- -->
 
 
 <style>
