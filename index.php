@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>影城</title>
+<title>ABC影城</title>
 <link rel="stylesheet" href="./css/css.css">
 <script src="./js/jquery-1.9.1.min.js"></script>
 </head>
@@ -26,7 +26,7 @@
     ABC影城票價全面八折優惠1個月
     </marquee>
   </div>
-  <!-- 中間部份 -->
+  <!-- 中間部份_start -->
   <div id="mm">
     <?php
     $do = $GET['do'] ?? 'main';
@@ -36,10 +36,10 @@
     } else {
       include "./front/main.php";
     }
-
-
     ?>
   </div>
+  <!-- 中間部份_end -->
+
   <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
 </div>
 </body>
