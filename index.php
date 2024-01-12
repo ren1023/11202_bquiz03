@@ -1,14 +1,13 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php include_once "./api/db.php";?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0047)? -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ABC影城</title>
-<link rel="stylesheet" href="./css/css.css">
-<script src="./js/jquery-1.9.1.min.js"></script>
+<title>影城</title>
+<link rel="stylesheet" href="css/css.css">
+<script src="js/jquery-1.9.1.min.js"></script>
 </head>
-
-<?php include_once "./api/db.php" ?>
 
 <body>
 <div id="main">
@@ -26,20 +25,19 @@
     ABC影城票價全面八折優惠1個月
     </marquee>
   </div>
-  <!-- 中間部份_start -->
   <div id="mm">
-    <?php
-    $do = $GET['do'] ?? 'main';
-    $file = "./front{$do}.php";
-    if (file_exists($file)) {
-      include $file;
-    } else {
-      include "./front/main.php";
-    }
-    ?>
-  </div>
-  <!-- 中間部份_end -->
+  <?php
+  
+  $do=$_GET['do']??'main';
+  $file="./front/{$do}.php";
+  if(file_exists($file)){
+    include $file;
+  }else{
+    include "./front/main.php";
+  }
 
+  ?>
+  </div>
   <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
 </div>
 </body>
