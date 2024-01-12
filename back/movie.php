@@ -72,7 +72,7 @@ foreach($movies as $idx => $movie){
 <script>
     $(".show-btn").on("click",function(){
         let id=$(this).data('id');
-        console.log('id');
+        // console.log('id');
         $.post("./api/show.php",{id},()=>{
             $(this).text(($(this).text()=='顯示')?"隱藏":"顯示");
             // switch($(this).text()){
@@ -97,10 +97,7 @@ foreach($movies as $idx => $movie){
     })
     $(".edit-btn").on("click",function(){
         let id=$(this).data('id');
-        $.post("./api/del.php",{id,table:'movie'},()=>{
-            location.reload();
-        })
-
+        location.href=`?do=edit_movie&id=${id}`;
     })
     $(".del-btn").on("click",function(){
         let id=$(this).data('id');
