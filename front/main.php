@@ -1,6 +1,6 @@
 <style>
     .lists{
-        position: relative;
+        /* position: relative; */
         left: 114px;
     }
     .item *{
@@ -10,7 +10,7 @@
         width: 200px;
         height: 240px;
         margin: auto;
-        position: absolute;
+        /* position: absolute; */
         box-sizing: border-box;
         display: none;
 
@@ -22,6 +22,52 @@
     }
     .item div{
         text-align: center;
+    }
+
+    .left,.right{
+        width: 0px;
+        border:20px solid black;
+        border-top-color: transparent;
+        /* border-right-color: green; */
+        border-bottom-color: transparent;
+    }
+    .left{
+        border-left-width: 0;
+    }
+    .right{
+        border-right-width: 0;
+    }
+    .btns{
+        width: 360px;
+        height: 100px;
+        /* background-color: lightcyan; */
+        display: flex;
+        overflow: hidden;
+        
+        /* background-color: lightblue; */
+    }
+    .btns img{
+        width: 60px;
+        height: 80px;
+    }
+    
+    .btn{
+        font-size: 12px;
+        text-align: center;
+        flex-shrink: 0;
+        width: 90px;
+        
+        
+
+    }
+    .controls{
+        width: 420px;
+        height: 100px;
+        position: relative;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 </style>
 <div class="half" style="vertical-align:top;">
@@ -43,6 +89,20 @@
         </div>
 
         <div class="controls">
+            <div class="left"></div>
+            <div class="btns">
+                <?php 
+                foreach($posters as $idx =>$poster){
+                ?>
+                <div class="btn">
+                <div><img src="./img/<?=$poster['img'];?>"></div>
+                <div><?=$poster['name'];?></div>
+                </div>
+                <?php 
+                    }
+                ?>
+            </div>
+            <div class="right"></div>
         </div>
     </div>
 
