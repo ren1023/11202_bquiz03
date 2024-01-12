@@ -1,3 +1,4 @@
+<!-- 處理院線片是否要顯示的功能 -->
 <?php include_once "db.php";
 
 

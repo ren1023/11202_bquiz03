@@ -1,3 +1,4 @@
+<!-- 編輯預告片資料 -->
 <?php include_once "db.php";
 
 foreach ($_POST['id'] as $idx => $id){

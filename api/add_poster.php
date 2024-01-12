@@ -1,3 +1,4 @@
+<!-- 新增預告片海報 -->
 <?php  include_once "db.php";
 
 if(isset($_FILES['poster']['tmp_name'])){

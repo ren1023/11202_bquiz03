@@ -1,3 +1,4 @@
+<!-- 預告片介紹_start -->
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <div class="rb tab" style="width:95%;">
@@ -9,6 +10,10 @@
         </div>
     </div>
 </div>
+<!-- 預告片介紹_end -->
+
+
+<!-- 院線片清單_start -->
 <div class="half">
     <h1>院線片清單</h1>
     <div class="rb tab" style="width:95%;">
@@ -20,3 +25,4 @@
         <div class="ct"> </div>
     </div>
 </div>
+<!-- 院線片清單_end -->
