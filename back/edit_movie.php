@@ -84,10 +84,11 @@
 <div style="display: flex;align-items:start">
     <div style="width:15%">劇情簡介</div>
     <div style="width:85%">
-        <textarea name="intro" value="<?=$movie['intro'];?>" style="width:99%;height:100px" cols="30" rows="10"></textarea>
+        <textarea name="intro" style="width:99%;height:100px" cols="30" rows="10"><?=$movie['intro'];?></textarea>
     </div>
 </div>
 <div class="ct">
+       <input type="hidden" name="id" value="<?=$movie['id'];?>">
     <input type="submit" value="編輯">
     <input type="reset" value="重置">
 </div>
