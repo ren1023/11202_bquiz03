@@ -9,7 +9,6 @@ for($i=0;$i<=$diff;$i++){
     $date=date("Y-m-d",strtotime("+$i days"));
     echo "<option value='$date'>$date</option>";
 
-
 }
 
 

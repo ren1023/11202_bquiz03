@@ -26,6 +26,12 @@
         // let id=$("#movie").val();
         getDates($("#movie").val());
     })
+    $("#date").on("change",function(){//電影變動時，可以拿到日期
+        // let id=$("#movie").val();
+        getsession($("#movie").val(),$('#date').val());
+    })
+
+
 function getMovies(){
     $.get("./api/get_movies.php",(movies)=>{
 
