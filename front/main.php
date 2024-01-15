@@ -102,6 +102,7 @@
             ?>
         </div>
 
+        <!-- 預告片下半部 -->
         <div class="controls">
             <div class="left"></div>
             <div class="btns">
@@ -176,6 +177,18 @@
             right: 90 * p
         })
     })
+
+
+    $(".btns").hover(//滑鼠移進時，停止動畫
+        function(){
+            clearInterval(timer); //刪除這個動畫
+        },
+        function(){
+        timer = setInterval(() => {slide()}, 3000) //每隔3秒執行slide  
+
+        }
+    )
+
 </script>
 
 
