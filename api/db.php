@@ -141,15 +141,17 @@ function to($url){
     header("location:$url");
 }
 
+//電影場次陣列
 $sess=[1=>'14:00~16:00',
         2=>'16:00~18:00',
         3=>'18:00~20:00',
         4=>'20:00~22:00',
-        5=>'22:00~24:00'        
+        5=>'22:00~24:00'
 ];
 
 $Poster=new DB('poster');
 $Movie=new DB('movie');
+$Order=new DB('orders');
 
 
 
