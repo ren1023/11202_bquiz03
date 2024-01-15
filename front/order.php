@@ -21,6 +21,11 @@
 <script>
     // 從後端取得所有的上映電影
     getMovies();
+
+    $("#movie").on("change",function(){//電影變動時，可以拿到日期
+        let id=$("#movie").val();
+        getDates(id);
+    })
 function getMovies(){
     $.get("./api/get_movies.php",(movies)=>{
 
