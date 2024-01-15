@@ -23,15 +23,15 @@
     getMovies();
 
     $("#movie").on("change",function(){//電影變動時，可以拿到日期
-        let id=$("#movie").val();
-        getDates(id);
+        // let id=$("#movie").val();
+        getDates($("#movie").val());
     })
 function getMovies(){
     $.get("./api/get_movies.php",(movies)=>{
 
         $("#movie").html(movies);
-        let id=$("#movie").val();
-        getDates(id);
+        // let id=$("#movie").val();
+        getDates($("#movie").val());
         // console.log($());
 })
 }
