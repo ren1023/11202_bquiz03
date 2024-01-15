@@ -126,13 +126,19 @@
     $(".item").eq(0).show(); //只顯示一張預告片
     let total=$(".btn").length;
     let now = 0;
+    let next = 0;
     let timer = setInterval(() => {slide()}, 3000) //每隔3秒執行slide  
-    function slide() {
+    function slide(n) {//n=>指定下一張要換的圖
         let ani =$(".item").eq(now).data("ani");
-        let next= now+1;
-        if(next>=total){
-            next=0;
-        }
+            if(typeof(next)!=='undefined'){
+                next= now+1;
+                    if(next>=total){
+                        next=0;
+                    }
+            }else{
+                next=n;
+            }
+
         switch (ani){
             case 1:
                 $(".item").eq(now).fadeOut(1000,function(){
@@ -178,6 +184,12 @@
         })
     })
 
+    //4-5當訪客點選按鈕列之按鈕時，能切換相對應預告片海報圖片及名片
+    $(".btn").on("click",function(){//當滑鼠點擊時，就跳到指定的那張圖。
+        let idx=$(this).index()
+        slide(idx);
+        console.log("idx",idx)
+    })
 
     $(".btns").hover(//滑鼠移進時，停止動畫
         function(){
@@ -192,7 +204,7 @@
 </script>
 
 
-<!-- -------------------------------------------------------------------------- -->
+<!--//=====院線片清單=====-->
 
 
 
