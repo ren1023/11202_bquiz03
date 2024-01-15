@@ -1,67 +1,79 @@
 <style>
-    .lists{
-        /* position: relative; */
+    .lists {
+        position: relative;
         left: 114px;
+        width: 200px;
+        height: 240px;
+        overflow: hidden;
     }
-    .item *{
+
+    .item * {
         box-sizing: border-box;
     }
-    .item{
+
+    .item {
         width: 200px;
         height: 240px;
         margin: auto;
-        /* position: absolute; */
+        position: absolute;
         box-sizing: border-box;
         display: none;
 
     }
 
-    .item div img{
+    .item div img {
         width: 100%;
         height: 220px;
     }
-    .item div{
+
+    .item div {
         text-align: center;
     }
 
-    .left,.right{
+    .left,
+    .right {
         width: 0px;
-        border:20px solid black;
+        border: 20px solid black;
         border-top-color: transparent;
         /* border-right-color: green; */
         border-bottom-color: transparent;
     }
-    .left{
+
+    .left {
         border-left-width: 0;
     }
-    .right{
+
+    .right {
         border-right-width: 0;
     }
-    .btns{
+
+    .btns {
         width: 360px;
         height: 100px;
         /* background-color: lightcyan; */
         display: flex;
         overflow: hidden;
-        
+
         /* background-color: lightblue; */
     }
-    .btns img{
+
+    .btns img {
         width: 60px;
         height: 80px;
     }
-    
-    .btn{
+
+    .btn {
         font-size: 12px;
         text-align: center;
         flex-shrink: 0;
         width: 90px;
         position: relative;
-        
-        
+
+
 
     }
-    .controls{
+
+    .controls {
         width: 420px;
         height: 100px;
         position: relative;
@@ -77,13 +89,14 @@
         <div class="lists">
             <!-- 項目 -->
             <?php
-            $posters=$Poster->all(['sh'=>1]," order by rank");
-            foreach($posters as $poster){
+            $posters = $Poster->all(['sh' => 1], " order by rank");
+            foreach ($posters as $idx => $poster) {
             ?>
-            <div class="item">
-                <div><img src="./img/<?=$poster['img'];?>" alt=""></div>
-                <div><?=$poster['name'];?></div>
-            </div>
+                <div class="item" data-ani=<?=$poster['ani'];?>>
+                    <div><img src="./img/<?= $poster['img']; ?>" alt="">
+                </div>
+                    <div><?= $poster['name']; ?></div>
+                </div>
             <?php
             }
             ?>
@@ -92,15 +105,15 @@
         <div class="controls">
             <div class="left"></div>
             <div class="btns">
-                <?php 
-                foreach($posters as $idx =>$poster){
+                <?php
+                foreach ($posters as $idx => $poster) {
                 ?>
-                <div class="btn">
-                <div><img src="./img/<?=$poster['img'];?>"></div>
-                <div><?=$poster['name'];?></div>
-                </div>
-                <?php 
-                    }
+                    <div class="btn">
+                        <div><img src="./img/<?= $poster['img']; ?>"></div>
+                        <div><?= $poster['name']; ?></div>
+                    </div>
+                <?php
+                }
                 ?>
             </div>
             <div class="right"></div>
@@ -109,43 +122,79 @@
 
 </div>
 <script>
-    $(".item").eq(0).show();//只顯示一張預告片
-
-    let now=0;
-    let timer=setInterval("slide()",3000) //每隔3秒執行slide  
-    function slide(){
-        $(".item").hide();
-        now++;
-        if(now >8){
-            now=0;
+    $(".item").eq(0).show(); //只顯示一張預告片
+    let total=$(".btn").length;
+    let now = 0;
+    let timer = setInterval(() => {slide()}, 3000) //每隔3秒執行slide  
+    function slide() {
+        let ani =$(".item").eq(now).data("ani");
+        let next= now+1;
+        if(next>=total){
+            next=0;
         }
-        $(".item").eq(now).show();
+        switch (ani){
+            case 1:
+                $(".item").eq(now).fadeOut(1000,function(){
+                    $(".item").eq(next).fadeIn(1000);
+                });
+            break;
+            case 2:
+                $(".item").eq(now).hide(1000,function(){
+                    $(".item").eq(next).show(1000);
+                });
+            break;
+            case 3:
+                $(".item").eq(now).slideUp(1000,function(){
+                    $(".item").eq(next).slideDown(1000);
+                });
+
+            break;
+        }
+        now=next;
+
     }
 
 
-    let total=$(".btn").length// 計算btn這個class元件的總數
-    let p=0;
+   
+    let p = 0;
     // console.log(total)
-    $(".left,.right").on("click",function(){//class是left和right，當click時
-        let arrow=$(this).attr('class');//找到元件的屬性
-        switch(arrow){
-            case "right"://點right這個屬性時，會+1
-                if(p+1 <=(total-4)){
-                    p=p+1;
+    $(".left,.right").on("click", function() { //class是left和right，當click時
+        let arrow = $(this).attr('class'); //找到元件的屬性
+        switch (arrow) {
+            case "right": //點right這個屬性時，會+1
+                if (p + 1 <= (total - 4)) {
+                    p = p + 1;
                 }
-            break;
+                break;
             case "left": //點right這個屬性時，會-1
-                if(p-1>=0){
-                    p=p-1;
+                if (p - 1 >= 0) {
+                    p = p - 1;
                 }
-            break;
+                break;
         }
-        $(".btn").animate({right:90*p})
+        $(".btn").animate({
+            right: 90 * p
+        })
     })
 </script>
 
 
 <!-- -------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <style>
