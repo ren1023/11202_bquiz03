@@ -20,11 +20,18 @@ $session = $_GET['session'];
     .seat {
         width: 63px;
         height: 85px;
+        position: relative;
     }
 
     .seats {
         display: flex;
         flex-wrap: wrap;
+    }
+
+    .chk{
+        position: absolute;
+        right:2px;
+        bottom: 2px;
     }
 </style>
 
@@ -38,10 +45,16 @@ $session = $_GET['session'];
             echo (($i%5)+1).'號';
             echo "</div>";
 
+            //設定位置圖片
+            echo "<div class='ct'>";
+            echo "<img src='./icon/03D02.png' >";//圖片
+            echo "</div>";
+
+            //設定checkbox
+            echo "<input type='checkbox' name='chk' value'$i' class='chk'>";
+
             echo "</div>";
         }
-
-
         ?>
 
     </div>
