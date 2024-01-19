@@ -28,9 +28,9 @@ $session = $_GET['session'];
         flex-wrap: wrap;
     }
 
-    .chk{
+    .chk {
         position: absolute;
-        right:2px;
+        right: 2px;
         bottom: 2px;
     }
 </style>
@@ -41,13 +41,13 @@ $session = $_GET['session'];
         for ($i = 0; $i < 20; $i++) {
             echo "<div class='seat'>";
             echo "<div class='ct'>";
-            echo (floor($i/5)+1).'排';
-            echo (($i%5)+1).'號';
+            echo (floor($i / 5) + 1) . '排';
+            echo (($i % 5) + 1) . '號';
             echo "</div>";
 
-            //設定位置圖片
+            //設定無人座位圖片
             echo "<div class='ct'>";
-            echo "<img src='./icon/03D02.png' >";//圖片
+            echo "<img src='./icon/03D02.png' >"; //圖片
             echo "</div>";
 
             //設定checkbox
@@ -70,3 +70,24 @@ $session = $_GET['session'];
         <button>訂購</button>
     </div>
 </div>
+
+<script>
+let seats=new Array();
+
+$(".chk").on("change",function(){
+    if($(this).prop('checked')){
+        if(seats.length+1<=4){
+            seats.push($(this).val())
+        }else{
+            $(this).prop('checked',false)
+            alert("每個人只能勾選四張票")
+        }
+    }else{
+
+        seats.splice(seats.indexOf($(this).val()),1)
+    }
+    console.log(seats.length)
+    $("#tickets").text(seats.length)
+
+}) 
+</script>
